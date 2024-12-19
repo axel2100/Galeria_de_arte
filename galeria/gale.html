@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de Fotos</title>
+<style>
+    /* Estilos básicos para la galería */
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f3f3;
+    }
+
+    header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 1rem 0;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+        background-color: #ffffff;
+        padding: 10px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav button {
+        padding: 10px 20px;
+        font-size: 1em;
+        border: none;
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    nav button:hover {
+        background-color: #555;
+        color: white;
+    }
+
+    .welcome-image {
+        display: block;
+        margin: 20px auto; /* Centrando la imagen */
+        width: 60%; /* Ajustando el tamaño de la imagen */
+        border-radius: 10px;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin: auto;
+        width: 90%;
+    }
+
+    .gallery-item {
+        text-align: center;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: none; /* Ocultas por defecto */
+        width: 50%; /* Aumentar el ancho de las pinturas */
+        margin-bottom: 30px;
+    }
+
+    .gallery-item img {
+        width: 100%; /* Las imágenes ocupan el 100% del contenedor */
+        height: auto;
+        display: block;
+    }
+
+    .gallery-item-content {
+        text-align: center;
+        padding: 20px;
+        font-size: 1.2em; /* Aumentar el tamaño del texto */
+    }
+
+    .gallery-item h2 {
+        margin-top: 0;
+        font-size: 1.8em; /* Títulos más grandes */
+        color: #333;
+    }
+
+    .gallery-item p {
+        margin-bottom: 0;
+        color: #666;
+        line-height: 1.6; /* Mejor espaciado entre líneas */
+    }
+
+    .gallery-item.active {
+        display: block; /* Muestra solo la pintura activa */
+    }
+
+    .back-button {
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #444;
+    }
+</style>
+<script>
+    function showPainting(id) {
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        document.getElementById(id).classList.add('active');
+        document.querySelector('.welcome-image').style.display = 'none'; // Oculta la imagen de bienvenida
+        document.querySelector('nav').style.display = 'none'; // Oculta la barra de navegación
+        window.scrollTo(0, 0);
+    }
+
+    function goToHome() {
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        document.querySelector('.welcome-image').style.display = 'block'; // Muestra la imagen de bienvenida
+        document.querySelector('nav').style.display = 'flex'; // Muestra la barra de navegación
+        window.scrollTo(0, 0);
+    }
+</script>
+</head>
+<body>
+    <header>
+        <h1>Galería de Arte</h1>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <button onclick="showPainting('painting1')">La noche estrellada</button>
+        <button onclick="showPainting('painting2')">El grito</button>
+        <button onclick="showPainting('painting3')">Terraza de café</button>
+        <button onclick="showPainting('painting4')">Los amantes</button>
+        <button onclick="showPainting('painting5')">Noche estrellada sobre el Ródano</button>
+        <button onclick="showPainting('painting6')">La creación de Adán</button>
+    </nav>
+
+    <!-- Imagen de Bienvenida -->
+    <img class="welcome-image" src="E:\ESWCUELA\proyectos\galeria/imagen.jpg" alt="Bienvenida a la galería de arte">
+
+    <!-- Galería -->
+    <div class="gallery">
+        <div id="painting1" class="gallery-item">
+            <img src="E:\ESWCUELA\proyectos\galeria/descarga1.jfif" alt="La noche estrellada">
+            <div class="gallery-item-content">
+                <h2>La noche estrellada, Vincent van Gogh (1889)</h2>
+                <p>En el MoMA en Nueva York, se encuentra esta obra de arte que representa la vista desde la ventana de la habitación del pintor durante su estancia en un asilo psiquiátrico...</p>
+            </div>
+        </div>
+
+        <div id="painting2" class="gallery-item">
+            <img src="E:\ESWCUELA\proyectos\galeria/descarga2.jfif" alt="El grito">
+            <div class="gallery-item-content">
+                <h2>El grito</h2>
+                <p>Es una serie de pinturas y grabados expresionistas del artista noruego Edvard Munch, que muestra una figura agónica contra un cielo rojo sangre...</p>
+            </div>
+        </div>
+
+        <div id="painting3" class="gallery-item">
+            <img src="E:\ESWCUELA\proyectos\galeria/descarga3.jfif" alt="Terraza de café por la noche">
+            <div class="gallery-item-content">
+                <h2>Terraza de café por la noche, Vincent van Gogh</h2>
+                <p>Vincent van Gogh vivió en la ciudad francesa de Arlés. Fue allí donde produjo algunos de sus trabajos más famosos...</p>
+            </div>
+        </div>
+
+        <div id="painting4" class="gallery-item">
+            <img src="E:\ESWCUELA\proyectos\galeria/descarga4.jfif" alt="Los amantes">
+            <div class="gallery-item-content">
+                <h2>Los amantes, René Magritte</h2>
+                <p>René Magritte llama la atención del público al pintar una pareja cuyos rostros se encuentran cubiertos con una tela húmeda que impide que se vean sus caras...</p>
+            </div>
+        </div>
+
+        <div id="painting5" class="gallery-item">
+            <img src="E:\ESWCUELA\proyectos\galeria/descarga5.jfif" alt="Noche estrellada sobre el Ródano">
+            <div class="gallery-item-content">
+                <h2>Noche estrellada sobre el Ródano, Vincent van Gogh</h2>
+                <p>Esta obra de Vincent van Gogh se encuentra a solo unos pasos de la Casa Amarilla donde el artista vivió durante su tiempo en Arlés...</p>
+            </div>
+        </div>
+
+        <div id="painting6" class="gallery-item">
+            <img src="E:\ESWCUELA\proyectos\galeria/descarga8.jfif" alt="La creación de Adán">
+            <div class="gallery-item-content">
+                <h2>La creación de Adán, Miguel Ángel</h2>
+                <p>Este fresco pintado en el techo de la Capilla Sixtina, fue realizado por Miguel Ángel entre 1508 y 1512...</p>
+            </div>
+        </div>
+            <button class="back-button" onclick="goToHome()">Regresar al inicio</button>
+        </div>
+
+      
+    </div>
+</body>
+</html>
